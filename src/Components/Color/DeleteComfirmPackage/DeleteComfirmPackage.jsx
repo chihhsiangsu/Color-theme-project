@@ -1,10 +1,10 @@
 import "../DeleteComfirmPackage/DeleteComfirmPackage.css";
 
-export function DeleteComfirmPackage() {
+export function DeleteComfirmPackage({ onCancel }) {
   return (
     <>
-      <sapn>Really Delete?</sapn>
-      <button>Cancel</button>
+      <sapn className="color-card-hightlight">Really Delete?</sapn>
+      <button onClick={onCancel}>Cancel</button>
       <button>Delete</button>
     </>
   );

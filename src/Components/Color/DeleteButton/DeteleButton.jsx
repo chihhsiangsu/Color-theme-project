@@ -1,3 +1,3 @@
-export function DeleteButton() {
-  return <button>Delete</button>;
+export function DeleteButton({ onConfirm }) {
+  return <button onClick={onConfirm}>Delete</button>;
 }
