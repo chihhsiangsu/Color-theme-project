@@ -3,6 +3,7 @@ import { initialColors } from "./lib/colors";
 import Color from "./Components/Color/Color";
 import { ColorForm } from "./Components/Color/ColorForm/ColorForm.jsx";
 import { uid } from "uid";
+import "../src/App.css";
 
 function App() {
   const [colors, setColors] = useState(initialColors);
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <>
-      <h1>Theme Creator</h1>
+      <h1 className="app-title">Theme Creator</h1>
       <ColorForm onSubmitColor={handleAddColor} />
       {colors.map((color) => {
         return <Color key={color.id} color={color} />;
