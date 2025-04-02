@@ -1,7 +1,7 @@
-import ColorInput from "../ColorImput/ColorImput";
-import "./ColorForm.css";
+import { ColorInput } from "../ColorInput/ColorInput";
+import "../ColorForm/ColorForm.css";
 
-export default function ColorForm({
+export function ColorForm({
   onSubmitColor,
   initialData = { role: "some color", hex: "#123456", contrastText: "#ffffff" },
 }) {
