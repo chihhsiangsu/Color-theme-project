@@ -20,11 +20,15 @@ function App() {
     <>
       <h1 className="app-title">Theme Creator</h1>
       <ColorForm onSubmitColor={handleAddColor} />
-      {colors.map((color) => {
-        return (
-          <Color key={color.id} color={color} onDelete={handleDeleteColor} />
-        );
-      })}
+      {colors.length > 0
+        ? colors.map((color) => (
+            <Color
+              key={color.id}
+              color={color}
+              onDelete={handleDeleteColor}
+            ></Color>
+          ))
+        : "No Color... start by adding one!"}
     </>
   );
 }
