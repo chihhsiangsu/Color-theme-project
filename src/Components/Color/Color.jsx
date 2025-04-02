@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./Color.css";
-import { DeleteButton } from "./DeleteButton/DeteleButton";
 import { DeleteComfirmPackage } from "./DeleteComfirmPackage/DeleteComfirmPackage";
 
 export default function Color({ color, onDelete }) {
@@ -27,7 +26,7 @@ export default function Color({ color, onDelete }) {
           onDelete={() => onDelete(color.id)}
         />
       ) : (
-        <DeleteButton onConfirm={handleShowConfirm} />
+        <button onClick={handleShowConfirm}>Delete</button>
       )}
     </div>
   );
