@@ -15,3 +15,4 @@ export default function Color({ color }) {
     </div>
   );
 }
+console.log("Find Issue 1");
