@@ -3,7 +3,7 @@ import "./Color.css";
 import { DeleteButton } from "./DeleteButton/DeteleButton";
 import { DeleteComfirmPackage } from "./DeleteComfirmPackage/DeleteComfirmPackage";
 
-export default function Color({ color }) {
+export default function Color({ color, onDelete }) {
   const [showDeleteComfirm, setShowDeleteComfirm] = useState(false);
 
   function handleShowConfirm() {
@@ -23,7 +23,10 @@ export default function Color({ color }) {
       <p>contrast: {color.contrastText}</p>
       <p>
         {showDeleteComfirm ? (
-          <DeleteComfirmPackage onCancel={() => setShowDeleteComfirm(false)} />
+          <DeleteComfirmPackage
+            onCancel={() => setShowDeleteComfirm(false)}
+            onDelete={() => onDelete(color.id)}
+          />
         ) : (
           <DeleteButton onConfirm={handleShowConfirm} />
         )}
