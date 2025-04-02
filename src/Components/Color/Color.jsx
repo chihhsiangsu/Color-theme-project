@@ -1,12 +1,18 @@
 import { useState } from "react";
 import "./Color.css";
 import { DeleteComfirmPackage } from "./DeleteComfirmPackage/DeleteComfirmPackage";
+import { ColorForm } from "./ColorForm/ColorForm";
 
 export default function Color({ color, onDelete }) {
   const [showDeleteComfirm, setShowDeleteComfirm] = useState(false);
+  const [showColorForm, setShowColorForm] = useState(false);
 
   function handleShowConfirm() {
     setShowDeleteComfirm(true);
+  }
+
+  function handleShowColorForm() {
+    setShowColorForm(true);
   }
 
   return (
@@ -27,6 +33,14 @@ export default function Color({ color, onDelete }) {
         />
       ) : (
         <button onClick={handleShowConfirm}>Delete</button>
+      )}
+      {showColorForm ? (
+        <>
+          <ColorForm mode="edit" />
+          <button onClick={() => setShowColorForm(false)}>Cancel</button>
+        </>
+      ) : (
+        <button onClick={handleShowColorForm}>Edit</button>
       )}
     </div>
   );
