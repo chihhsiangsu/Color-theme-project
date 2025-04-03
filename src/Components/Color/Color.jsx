@@ -32,6 +32,7 @@ export default function Color({ color, onDelete, onUpdate }) {
         }
       );
       const data = await response.json();
+      console.log(data);
       setContrastResult(data);
     }
 
@@ -50,27 +51,39 @@ export default function Color({ color, onDelete, onUpdate }) {
       <CopyButton copiedText={color.hex} />
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
-      {!showColorForm &&
-        (showDeleteComfirm ? (
-          <DeleteComfirmPackage
-            onCancel={() => setShowDeleteComfirm(false)}
-            onDelete={() => onDelete(color.id)}
-          />
+      <p>{"Overall Contract Score: " + contrastResult.overall}</p>
+
+      {
+        //condition of when to show the DeleteComfirmPackage : warning + 2 buttons,
+        //1. showColorFrom is false 2. showDeleteComfirm is true
+
+        !showColorForm &&
+          (showDeleteComfirm ? (
+            <DeleteComfirmPackage
+              onCancel={() => setShowDeleteComfirm(false)}
+              onDelete={() => onDelete(color.id)}
+            />
+          ) : (
+            <button onClick={handleShowConfirm}>Delete</button>
+          ))
+      }
+
+      {
+        //condition when to show editButton and single ColorForm
+
+        showColorForm ? (
+          <>
+            <ColorForm
+              mode="edit"
+              initialData={color}
+              onSubmitColor={(updateColor) => onUpdate(color.id, updateColor)}
+            />
+            <button onClick={() => setShowColorForm(false)}>Cancel</button>
+          </>
         ) : (
-          <button onClick={handleShowConfirm}>Delete</button>
-        ))}
-      {showColorForm ? (
-        <>
-          <ColorForm
-            mode="edit"
-            initialData={color}
-            onSubmitColor={(updateColor) => onUpdate(color.id, updateColor)}
-          />
-          <button onClick={() => setShowColorForm(false)}>Cancel</button>
-        </>
-      ) : (
-        <button onClick={handleShowColorForm}>Edit</button>
-      )}
+          <button onClick={handleShowColorForm}>Edit</button>
+        )
+      }
     </div>
   );
 }
