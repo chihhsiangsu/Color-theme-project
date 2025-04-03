@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function CopyButton({ copiedText }) {
   const [showCopyConfirm, setShowCopyConfirm] = useState(false);
@@ -7,6 +7,13 @@ export function CopyButton({ copiedText }) {
     await navigator.clipboard.writeText(copiedText);
     setShowCopyConfirm(true);
   }
+
+  useEffect(() => {
+    const countTime = setTimeout(() => {
+      setShowCopyConfirm(false);
+    }, 3 * 1000);
+    return () => clearTimeout(countTime);
+  }, [showCopyConfirm]);
 
   return (
     <>
