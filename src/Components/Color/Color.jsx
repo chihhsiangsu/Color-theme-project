@@ -32,7 +32,6 @@ export default function Color({ color, onDelete, onUpdate }) {
         }
       );
       const data = await response.json();
-      console.log("✅ Contrast API result:", data);
       setContrastResult(data);
     }
 
