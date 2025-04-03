@@ -3,7 +3,7 @@ import "./Color.css";
 import { DeleteComfirmPackage } from "./DeleteComfirmPackage/DeleteComfirmPackage";
 import { ColorForm } from "./ColorForm/ColorForm";
 
-export default function Color({ color, onDelete }) {
+export default function Color({ color, onDelete, onUpdate }) {
   const [showDeleteComfirm, setShowDeleteComfirm] = useState(false);
   const [showColorForm, setShowColorForm] = useState(false);
 
@@ -37,7 +37,10 @@ export default function Color({ color, onDelete }) {
         ))}
       {showColorForm ? (
         <>
-          <ColorForm mode="edit" />
+          <ColorForm
+            mode="edit"
+            onSubmitColor={(updateColor) => onUpdate(color.id, updateColor)}
+          />
           <button onClick={() => setShowColorForm(false)}>Cancel</button>
         </>
       ) : (
