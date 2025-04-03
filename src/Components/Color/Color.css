@@ -9,3 +9,14 @@
   background: black;
   color: white;
 }
+
+.score-yup {
+  background-color: green;
+}
+
+.score-nope {
+  background-color: red;
+}
+.score-kinda {
+  background-color: salmon;
+}
