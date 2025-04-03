@@ -51,8 +51,19 @@ export default function Color({ color, onDelete, onUpdate }) {
       <CopyButton copiedText={color.hex} />
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
-      <p>{"Overall Contract Score: " + contrastResult.overall}</p>
-
+      {contrastResult?.overall && (
+        <p>
+          {contrastResult.overall === "Yup" && (
+            <span className="score-yup">Overall Contrast Score: Yup</span>
+          )}
+          {contrastResult.overall === "Kinda" && (
+            <span className="score-kinda">Overall Contrast Score: Kinda</span>
+          )}
+          {contrastResult.overall === "Nope" && (
+            <span className="score-nope">Overall Contrast Score: Nope</span>
+          )}
+        </p>
+      )}
       {
         //condition of when to show the DeleteComfirmPackage : warning + 2 buttons,
         //1. showColorFrom is false 2. showDeleteComfirm is true
@@ -67,7 +78,6 @@ export default function Color({ color, onDelete, onUpdate }) {
             <button onClick={handleShowConfirm}>Delete</button>
           ))
       }
-
       {
         //condition when to show editButton and single ColorForm
 
