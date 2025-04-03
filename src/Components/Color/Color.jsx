@@ -26,14 +26,15 @@ export default function Color({ color, onDelete }) {
       <h3 className="color-card-hightlight">{color.hex}</h3>
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
-      {showDeleteComfirm ? (
-        <DeleteComfirmPackage
-          onCancel={() => setShowDeleteComfirm(false)}
-          onDelete={() => onDelete(color.id)}
-        />
-      ) : (
-        <button onClick={handleShowConfirm}>Delete</button>
-      )}
+      {!showColorForm &&
+        (showDeleteComfirm ? (
+          <DeleteComfirmPackage
+            onCancel={() => setShowDeleteComfirm(false)}
+            onDelete={() => onDelete(color.id)}
+          />
+        ) : (
+          <button onClick={handleShowConfirm}>Delete</button>
+        ))}
       {showColorForm ? (
         <>
           <ColorForm mode="edit" />
