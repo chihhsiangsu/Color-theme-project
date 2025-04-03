@@ -39,6 +39,7 @@ export default function Color({ color, onDelete, onUpdate }) {
         <>
           <ColorForm
             mode="edit"
+            initialData={color}
             onSubmitColor={(updateColor) => onUpdate(color.id, updateColor)}
           />
           <button onClick={() => setShowColorForm(false)}>Cancel</button>
