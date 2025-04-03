@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Color.css";
 import { DeleteComfirmPackage } from "./DeleteComfirmPackage/DeleteComfirmPackage";
 import { ColorForm } from "./ColorForm/ColorForm";
@@ -7,6 +7,7 @@ import { CopyButton } from "./CopyToClipboard/CopyToClipboard";
 export default function Color({ color, onDelete, onUpdate }) {
   const [showDeleteComfirm, setShowDeleteComfirm] = useState(false);
   const [showColorForm, setShowColorForm] = useState(false);
+  const [contrastResult, setContrastResult] = useState();
 
   function handleShowConfirm() {
     setShowDeleteComfirm(true);
@@ -15,6 +16,28 @@ export default function Color({ color, onDelete, onUpdate }) {
   function handleShowColorForm() {
     setShowColorForm(true);
   }
+
+  useEffect(() => {
+    async function postFetch() {
+      const response = await fetch(
+        "https://www.aremycolorsaccessible.com/api/are-they",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            colors: [color.hex, color.contrastText],
+          }),
+        }
+      );
+      const data = await response.json();
+      console.log("✅ Contrast API result:", data);
+      setContrastResult(data);
+    }
+
+    postFetch();
+  }, [color.hex, color.contrastText]);
 
   return (
     <div
