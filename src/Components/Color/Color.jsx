@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import "./Color.css";
-import { DeleteComfirmPackage } from "./DeleteComfirmPackage/DeleteComfirmPackage";
 import { ColorForm } from "../ColorForm/ColorForm";
 import { CopyButton } from "../CopyToClipboard/CopyToClipboard";
+import { DeleteComfirmPackage } from "../DeleteComfirmPackage/DeleteComfirmPackage";
 
 export default function Color({ color, onDelete, onUpdate }) {
   const [showDeleteComfirm, setShowDeleteComfirm] = useState(false);

@@ -5,8 +5,8 @@ import { uid } from "uid";
 import "../src/App.css";
 import useLocalStorageState from "use-local-storage-state";
 import { Theme } from "./Components/Theme/Theme.jsx";
-import { initialThemes } from "./lib/themes";
-import { useState } from "react";
+//import { initialThemes } from "./lib/themes";
+//import { useState } from "react";
 
 //Colors
 
@@ -15,8 +15,8 @@ function App() {
     defaultValue: initialColors,
   });
 
-  function handleAddColor(newColor) {
-    setColors([{ id: uid(), ...newColor }, ...colors]);
+  function handleAddColor(addedColor) {
+    setColors([{ id: uid(), ...addedColor }, ...colors]);
   }
   function handleDeleteColor(id) {
     setColors(colors.filter((color) => color.id !== id));
@@ -29,7 +29,7 @@ function App() {
     );
   }
 
-  //Themes
+  /*Themes
 
   const [themes, setThemes] = useLocalStorageState("themes", {
     defaultValue: initialThemes,
@@ -51,19 +51,20 @@ function App() {
   function handleEditTheme() {}
 
   function handleDeleteTheme() {}
+  */
 
   return (
     <>
       <h1 className="app-title">Theme Creator</h1>
       <Theme
-        themes={themes}
-        selectedThemeId={selectedThemeId}
-        onAddTheme={handleAddTheme}
-        onEditTheme={handleEditTheme}
-        onDeleteTheme={handleDeleteTheme}
-        onSelectTheme={setSelectedThemeId}
+        themes={[]}
+        selectedThemeId={""}
+        onAddTheme={() => {}}
+        onEditTheme={() => {}}
+        onDeleteTheme={() => {}}
+        onSelectTheme={() => {}}
       />
-      <ColorForm onSubmitColor={handleAddColor} />
+      <ColorForm handleAddColor={handleAddColor} />
       {colors.length > 0
         ? colors.map((color) => (
             <Color
