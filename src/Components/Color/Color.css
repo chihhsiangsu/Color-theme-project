@@ -12,11 +12,14 @@
 
 .score-yup {
   background-color: green;
+  color: black;
 }
 
 .score-nope {
   background-color: red;
+  color: black;
 }
 .score-kinda {
   background-color: salmon;
+  color: black;
 }

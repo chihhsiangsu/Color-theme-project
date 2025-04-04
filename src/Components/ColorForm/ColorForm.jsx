@@ -1,8 +1,8 @@
 import { ColorInput } from "../ColorInput/ColorInput";
-import "../ColorForm/ColorForm.css";
+import "./ColorForm.css";
 
 export function ColorForm({
-  onSubmitColor,
+  handleAddColor,
   initialData = {
     role: "some color",
     hex: "#123456",
@@ -14,7 +14,7 @@ export function ColorForm({
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmitColor(data);
+    handleAddColor(data);
   }
 
   return (
