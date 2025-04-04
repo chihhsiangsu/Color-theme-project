@@ -32,6 +32,7 @@ export default function Color({ color, onDelete, onUpdate }) {
         }
       );
       const data = await response.json();
+      console.log(data);
       setContrastResult(data);
     }
 

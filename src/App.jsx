@@ -64,8 +64,8 @@ function App() {
         onSelectTheme={setSelectedThemeId}
       />
       <ColorForm onSubmitColor={handleAddColor} />
-      {themeColors.length > 0
-        ? themeColors.map((color) => (
+      {colors.length > 0
+        ? colors.map((color) => (
             <Color
               key={color.id}
               color={color}
